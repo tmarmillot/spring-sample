@@ -1,10 +1,11 @@
 # Spring - JSON
 
   - 참고: 
-  http://pangyo-dev.tistory.com/2
-  https://gist.github.com/matsev/3672298#file-gettestuserasjson-java
+    - http://pangyo-dev.tistory.com/2
+    - https://gist.github.com/matsev/3672298#file-gettestuserasjson-java
 
 ## POM
+  - STS SpringMVC 기본 템플릿 POM을 제외한 추가 설정 X)
   - jackson-databind 사용 
   - spring 버전에 따라 jackson-databind 또는 jackson-mapper-asl 사용
 
