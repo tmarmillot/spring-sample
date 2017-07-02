@@ -1,4 +1,4 @@
-package com.royleej9.sample;
+package com.royleej9.sample.web;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.royleej9.sample.vo.User;
 
 @Controller
 public class HomeController {
