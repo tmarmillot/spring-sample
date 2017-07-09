@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -21,7 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.royleej9.sample.web.HomeController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "classpath:/test-context.xml" })
+@WebAppConfiguration
+@ContextConfiguration(locations = { 
+		"file:src/main/webapp/WEB-INF/spring/root-context.xml", 
+		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
 public class TestControllerJson {
 
 	private MockMvc mockMvc;
