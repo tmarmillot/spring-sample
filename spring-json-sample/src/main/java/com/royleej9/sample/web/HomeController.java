@@ -26,7 +26,7 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		return "home";
 	}
-
+	
 	@RequestMapping(value = "/ajax/testGet", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> testGet(@RequestParam("id") String id, @RequestParam("pwd") String pwd) {
