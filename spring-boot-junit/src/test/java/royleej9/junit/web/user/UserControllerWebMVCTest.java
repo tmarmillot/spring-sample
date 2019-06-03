@@ -1,0 +1,112 @@
+package royleej9.junit.web.user;
+
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.sql.Timestamp;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * controller Test
+ * Mock을 사용하여 Service의 리턴 값을 가정하여 
+ * controller의 url 테스트 
+ * @author a
+ *
+ */
+@Slf4j
+@RunWith(SpringRunner.class)
+@WebMvcTest(UserController.class)
+public class UserControllerWebMVCTest {
+
+    @MockBean
+    private UserService userService;
+
+    @InjectMocks
+    private UserController userController;
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    private static ObjectMapper objectMapper = new ObjectMapper();
+
+    final User user1 = User.builder()
+            .id("id1")
+            .name("test1")
+            .password("pwd123")
+            .createdDate(new Timestamp(System.currentTimeMillis()))
+            .build();
+
+    final User user2 = User.builder()
+            .id("id2")
+            .name("test2")
+            .password("pwd321")
+            .createdDate(new Timestamp(System.currentTimeMillis()))
+            .build();
+
+    @Before
+    public void setup() throws Exception {
+    }
+
+    @Test
+    public void testGetUsers() throws Exception {
+        // given
+        when(userService.getUsers(null)).thenReturn(Arrays.asList(user1, user2));
+
+        // when
+        this.mockMvc.perform(get("/users").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andDo(print());
+
+        this.mockMvc.perform(get("/users").contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andDo(print());
+    }
+
+    @Test
+    public void testGetUsersResult() throws Exception {
+        List<User> users = Arrays.asList(user1, user2);
+
+        // given
+        given(userService.getUsers(null)).willReturn(users);
+
+        // when
+        MvcResult result = this.mockMvc.perform(get("/users").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andDo(print())
+                .andReturn();
+
+        String stringResult = result.getResponse().getContentAsString();
+        log.info(stringResult);
+
+        String param = objectMapper.writeValueAsString(users);
+        boolean doesContain = stringResult.contains(param);
+        assertTrue(doesContain);
+    }
+}
