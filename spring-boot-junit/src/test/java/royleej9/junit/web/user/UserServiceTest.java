@@ -19,6 +19,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 
+
+/**
+ * DB에서 데이터를 추가/조회를 하여 테스트 진행
+ * @author a
+ *
+ */
+
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
