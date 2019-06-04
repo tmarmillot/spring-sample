@@ -15,7 +15,7 @@ public class GetController {
 
     
     public GetController() {
-        log.info("GetController==================================");
+        log.info("INIT GetController==================================");
     }
     
 	@RequestMapping(value = "/test-get", method = RequestMethod.GET)

@@ -11,12 +11,12 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class UserService {
     
-    public UserService() {
-        log.info("UserService=====================================================");
-    }
-
     @Autowired
     private UserMapper userMapper;
+    
+    public UserService() {
+        log.info("INIT UserService=====================================================");
+    }
 
     public boolean insertUser(final User user) {
         final User conUser = User.builder().id(user.getId()).build();

@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
     
     public UserController() {
-        log.info("UserController============================================");
+        log.info("INIT UserController============================================");
     }
 
     @Autowired
