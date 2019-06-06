@@ -34,7 +34,13 @@ import lombok.extern.slf4j.Slf4j;
  * controller Test
  * Mock을 사용하여 Service의 리턴 값을 가정하여 
  * controller의 url 테스트 
- * @author a
+ * spring mvc 관련 부분 테스트 할때 사용 
+ *  - @Controller, @ControllerAdvice, @JsonComponent, Converter, GenericConverter, Filter, WebMvcConfigurer, and HandlerMethodArgumentResolver
+ * @Component 등 어노테이션은 자동 스캔 되지 않음 (Mock등을 사용해야함)
+ * 
+ * 참고: https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html#boot-features-testing-spring-boot-applications-testing-autoconfigured-mvc-tests
+ * 
+ * @author royleej9
  *
  */
 @Slf4j
