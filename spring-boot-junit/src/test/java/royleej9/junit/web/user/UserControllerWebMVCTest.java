@@ -1,7 +1,6 @@
 package royleej9.junit.web.user;
 
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
@@ -17,7 +16,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -30,7 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
+/*-
  * controller Test
  * Mock을 사용하여 Service의 리턴 값을 가정하여 
  * controller의 url 테스트 
@@ -50,9 +48,6 @@ public class UserControllerWebMVCTest {
 
     @MockBean
     private UserService userService;
-
-    @InjectMocks
-    private UserController userController;
 
     @Autowired
     private MockMvc mockMvc;
@@ -82,13 +77,8 @@ public class UserControllerWebMVCTest {
         // given
         when(userService.getUsers(null)).thenReturn(Arrays.asList(user1, user2));
 
-        // when
+        // when // then
         this.mockMvc.perform(get("/users").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)))
-                .andDo(print());
-
-        this.mockMvc.perform(get("/users").contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andDo(print());
@@ -101,7 +91,7 @@ public class UserControllerWebMVCTest {
         // given
         given(userService.getUsers(null)).willReturn(users);
 
-        // when
+        // when // then
         MvcResult result = this.mockMvc.perform(get("/users").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))

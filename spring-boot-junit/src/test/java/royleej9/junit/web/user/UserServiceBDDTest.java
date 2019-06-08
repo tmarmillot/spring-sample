@@ -24,9 +24,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
+/*-
  * 실제 데이터가 아닌 Mockito를 사용한 임의 데이터를 조회하도록 설정 
- * @author a
+ * @author royleej9
  *
  */
 @Slf4j

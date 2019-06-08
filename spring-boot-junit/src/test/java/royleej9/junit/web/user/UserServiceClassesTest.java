@@ -21,7 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
 
 
-/**
+/*-
  * DB에서 데이터를 추가/조회를 하여 테스트 진행
  * - @SpringBootTest(classes={클래스1.class, 클래스2.class}) 을 사용하여 테스트에 사용할 특정 class만을 선언하면
  *    테스트 진행시 다른 클래스는 생성하지 않음

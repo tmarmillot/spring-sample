@@ -23,6 +23,11 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import lombok.extern.slf4j.Slf4j;
 
+/*-
+ * Mockito - answer를 사용하여 값에 따라 결과를 리턴하는 예제
+ * @author royleej9
+ *
+ */
 @Slf4j
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceMockAnswerTest {

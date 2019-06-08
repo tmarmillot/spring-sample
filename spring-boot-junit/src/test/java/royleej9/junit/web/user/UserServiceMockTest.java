@@ -19,14 +19,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
+/*-
  * Mockito의 answer를 사용하여 조건 값에 따라 테스트 값을 리턴하도록 설정
- * @author a
+ * @author royleej9
  *
  */
 @Slf4j

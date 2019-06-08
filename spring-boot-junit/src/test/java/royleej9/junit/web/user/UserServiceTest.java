@@ -13,23 +13,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 
-
-/**
+/*-
  * DB에서 데이터를 추가/조회를 하여 테스트 진행
- * @author a
+ * @author royleej9
  *
  */
 
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@TestPropertySource("classpath:application-test.properties")
+//@TestPropertySource("classpath:application-test.properties")
 @Transactional
 public class UserServiceTest {
 
