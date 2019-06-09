@@ -29,7 +29,9 @@ import royleej9.junit.web.user.config.TestUserConfig;
 
 /*-
  * @SpringBootTest /@AutoConfigureMockMvc 
+ * - 사용하기 간단한 테스트 방법
  * - 테스트 대상을 제외한 전체 bean을 스캔함- 시간이 많이 걸림
+ * - @ContextConfiguration 을 사용하여 @ComponentScan 범위 재 설정 가능
  * 
  * @author royleej9
  * @param <O>
@@ -39,7 +41,8 @@ import royleej9.junit.web.user.config.TestUserConfig;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserControllerTest {
+@ContextConfiguration(classes = TestUserConfig.class)
+public class UserControllerContextTest {
     @Autowired
     private MockMvc mockMvc;
 
